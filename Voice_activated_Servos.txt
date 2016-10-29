@@ -1,0 +1,154 @@
+  #include <Servo.h> 
+  String voice;
+  
+  Servo lightsonservo;
+  Servo lightsoffservo;
+  
+  int pos1 = 0;
+  int pos2 = 0;
+  int pos3 = 0;
+  int pos4 = 0;
+  
+  void setup() {
+    Serial.begin(9600);
+   }
+   
+   void loop() {
+    while (Serial.available()){  
+    delay(10); 
+    char c = Serial.read(); 
+    if (c == '#') {break;} 
+    voice += c; 
+    } 
+    if (voice.length() > 0) {
+      Serial.println(voice);
+    
+ ///////////////////////////////////////////////////////////////////////////////////////
+   //       LIGHTS ON 
+ //////////////////////////////////////////////////////////////////////////////////////// 
+   if(voice == "*lights on") 
+  {
+     lightsonservo.attach(11);
+      for(pos3 = 145; pos3>=1; pos3-=1)
+      {                                     
+        lightsonservo.write(pos3);              
+      delay(15);                       
+      } 
+    for(pos3 = 0; pos3 < 145; pos3 += 1)      
+      {                                   
+        lightsonservo.write(pos3);                  
+        delay(15);  
+        lightsonservo.detach();    
+      } 
+  }
+  
+  else if(voice == "*lights off") 
+  {
+       lightsoffservo.attach(10);
+        for(pos4 = 145; pos4>=1; pos4-=1)
+        {                                     
+          lightsoffservo.write(pos4);              
+          delay(15);                       
+        } 
+        for(pos4 = 0; pos4 < 145; pos4 += 1)    
+        {                                   
+         lightsoffservo.write(pos4);               
+         delay(15); 
+          lightsoffservo.detach();   
+        } 
+  }
+  else if(voice == "*sexy time") 
+  {
+     lightsoffservo.attach(10);
+      for(pos4 = 145; pos4>=1; pos4-=1)
+      {                                     
+        lightsoffservo.write(pos4);              
+        delay(15);                       
+      } 
+      for(pos4 = 0; pos4 < 145; pos4 += 1)    
+      {                                   
+         lightsoffservo.write(pos4);               
+         delay(15); 
+         lightsoffservo.detach();   
+      } 
+  }
+  
+  
+  else if(voice == "*turn lights on") 
+  {
+     lightsonservo.attach(11);
+  for(pos3 = 120; pos3>=1; pos3-=1)
+  {                                     
+    lightsonservo.write(pos3);              
+    delay(15);                       
+    } 
+  for(pos3 = 0; pos3 < 120; pos3 += 1)      
+    {                                   
+      lightsonservo.write(pos3);                  
+      delay(15);  
+  lightsonservo.detach();    
+    } 
+  }
+  else if(voice == "*L boomis") 
+  {
+     lightsonservo.attach(11);
+  for(pos3 = 120; pos3>=1; pos3-=1)
+  {                                     
+    lightsonservo.write(pos3);              
+    delay(15);                       
+    } 
+  for(pos3 = 0; pos3 < 120; pos3 += 1)      
+    {                                   
+      lightsonservo.write(pos3);                  
+      delay(15);  
+  lightsonservo.detach();    
+    } 
+  }
+  else if(voice == "*turn the lights on") 
+  {
+     lightsonservo.attach(11);
+  for(pos3 = 120; pos3>=1; pos3-=1)
+  {                                     
+    lightsonservo.write(pos3);              
+    delay(15);                       
+    } 
+  for(pos3 = 0; pos3 < 120; pos3 += 1)      
+    {                                   
+      lightsonservo.write(pos3);                  
+      delay(15);  
+  lightsonservo.detach();    
+    } 
+  }
+  else if(voice == "*turn lights off") 
+  {
+     lightsoffservo.attach(10);
+      for(pos4 = 120; pos4>=1; pos4-=1)
+  {                                     
+    lightsoffservo.write(pos4);              
+    delay(15);                       
+    } 
+        for(pos4 = 0; pos4 < 120; pos4 += 1)    
+    {                                   
+     lightsoffservo.write(pos4);               
+     delay(15); 
+  lightsoffservo.detach();   
+    } 
+  }
+  else if(voice == "*turn the lights off") 
+  {
+     lightsoffservo.attach(10);
+      for(pos4 = 120; pos4>=1; pos4-=1)
+  {                                     
+    lightsoffservo.write(pos4);              
+    delay(15);                       
+    } 
+        for(pos4 = 0; pos4 < 120; pos4 += 1)    
+    {                                   
+     lightsoffservo.write(pos4);               
+     delay(15); 
+  lightsoffservo.detach();   
+    } 
+  }
+  voice="";
+          }
+      }
